@@ -31,6 +31,10 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
+          wranglerVersion: '4.54.0'  # 使用与本地相同的wrangler版本
+          workingDirectory: '.'  # 指定工作目录
+        env:
+          WRANGLER_LOG: debug  # 启用调试日志
 
       - name: Import articles to KV
         run: npm run import
