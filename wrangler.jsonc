@@ -1,5 +1,6 @@
 {
   "name": "cloudflare-workers-blog",
+  "account_id": "9810362882c3c40a4ab9715b139bb019", // <-- 【关键新增行】
   "compatibility_date": "2025-12-15",
   "main": "index.js",
   "kv_namespaces": [
