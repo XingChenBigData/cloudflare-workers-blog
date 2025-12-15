@@ -39,8 +39,8 @@ async function parseMarkdownFiles() {
         // 生成文章ID（6位数字）
         const id = generateArticleId();
         
-        // 生成link
-        const link = slugify(attributes.title, { lower: true, strict: true });
+        // 生成link，使用文章ID作为唯一标识
+        const link = id;
         
         // 转换Markdown为HTML
         const contentHtml = marked.parse(body);
@@ -52,7 +52,7 @@ async function parseMarkdownFiles() {
         const article = {
           id,
           title: attributes.title,
-          img: attributes.img || '',
+          img: attributes.img || 'https://via.placeholder.com/200x112?text=No+Image',
           link,
           createDate: attributes.date,
           category: attributes.category || '',
@@ -70,7 +70,7 @@ async function parseMarkdownFiles() {
         indexList.push({
           id,
           title: attributes.title,
-          img: attributes.img || '',
+          img: attributes.img || 'https://via.placeholder.com/200x112?text=No+Image',
           link,
           createDate: attributes.date,
           category: attributes.category || '',

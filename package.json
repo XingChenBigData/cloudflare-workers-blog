@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "dotenv": "^17.2.3",
     "front-matter": "^4.0.2",
     "fs-extra": "^11.3.2",
     "marked": "^17.0.1",

@@ -1,12 +1,22 @@
 const fs = require('fs-extra');
 const path = require('path');
 const fetch = require('node-fetch');
+require('dotenv').config(); // 加载.env文件
+
+// 从index.js读取配置
+const indexContent = fs.readFileSync(path.join(__dirname, '../index.js'), 'utf8');
+const cacheTokenMatch = indexContent.match(/"cacheToken":"(.*?)"/);
+const cacheZoneIdMatch = indexContent.match(/"cacheZoneId":"(.*?)"/);
+const cacheToken = cacheTokenMatch ? cacheTokenMatch[1] : '';
+const cacheZoneId = cacheZoneIdMatch ? cacheZoneIdMatch[1] : '';
 
 // 从环境变量获取配置
 const CONFIG = {
   CF_API_TOKEN: process.env.CF_API_TOKEN,
   CF_ACCOUNT_ID: process.env.CF_ACCOUNT_ID,
   CF_ZONE_ID: process.env.CF_ZONE_ID,
+  CACHE_TOKEN: cacheToken,
+  CACHE_ZONE_ID: cacheZoneId,
   KV_NAMESPACE_ID: 'da4233e8fee74d0caa1a3088d5afe20e',
   WORKER_NAME: 'cloudflare-workers-blog',
   IMPORT_FILE: path.join(__dirname, '../content/output/import-data.json')
@@ -53,13 +63,22 @@ async function uploadToKV(key, value) {
 
 // 清除缓存
 async function purgeCache() {
-  const url = `https://api.cloudflare.com/client/v4/zones/${CONFIG.CF_ZONE_ID}/purge_cache`;
+  // 使用index.js中的专用缓存Token
+  const cacheToken = CONFIG.CACHE_TOKEN;
+  const cacheZoneId = CONFIG.CACHE_ZONE_ID;
+  
+  if (!cacheToken || !cacheZoneId) {
+    console.log('跳过缓存清除: 未找到有效的缓存Token或区域ID');
+    return;
+  }
+  
+  const url = `https://api.cloudflare.com/client/v4/zones/${cacheZoneId}/purge_cache`;
   
   try {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${CONFIG.CF_API_TOKEN}`,
+        'Authorization': `Bearer ${cacheToken}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ purge_everything: true })
