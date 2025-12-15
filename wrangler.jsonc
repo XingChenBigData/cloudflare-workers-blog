@@ -1,0 +1,11 @@
+{
+  "name": "cloudflare-workers-blog",
+  "compatibility_date": "2025-12-15",
+  "main": "index.js",
+  "kv_namespaces": [
+    {
+      "binding": "CFBLOG",
+      "id": "da4233e8fee74d0caa1a3088d5afe20e"
+    }
+  ]
+}
