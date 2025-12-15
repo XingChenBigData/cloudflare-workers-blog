@@ -92,7 +92,7 @@ npm run convert
 
 ### 如何获取Cloudflare配置信息
 
-#### 1. 获取Cloudflare API令牌 (CF_API_TOKEN)
+#### 1. 获取Cloudflare API令牌 (CLOUDFLARE_API_TOKEN)
 
 1. 登录Cloudflare控制台：https://dash.cloudflare.com/
 2. 点击右上角的头像，选择 `My Profile`
@@ -105,22 +105,22 @@ npm run convert
    - Zone > Cache Purge > Purge
    - Zone > Workers Routes > Edit
 7. 点击 `Continue to summary`，然后点击 `Create Token`
-8. 复制生成的API令牌，这就是 `CF_API_TOKEN`
+8. 复制生成的API令牌，这就是 `CLOUDFLARE_API_TOKEN`
 
-#### 2. 获取Cloudflare账户ID (CF_ACCOUNT_ID)
+#### 2. 获取Cloudflare账户ID (CLOUDFLARE_ACCOUNT_ID)
 
 1. 登录Cloudflare控制台
 2. 点击右上角的头像，选择 `My Profile`
 3. 在左侧菜单中选择 `Account`
-4. 您将在页面顶部看到 `Account ID`，复制它作为 `CF_ACCOUNT_ID`
+4. 您将在页面顶部看到 `Account ID`，复制它作为 `CLOUDFLARE_ACCOUNT_ID`
 
-#### 3. 获取Cloudflare区域ID (CF_ZONE_ID)
+#### 3. 获取Cloudflare区域ID (CLOUDFLARE_ZONE_ID)
 
 1. 登录Cloudflare控制台
 2. 选择您的网站域名
 3. 点击右侧边栏中的 `Overview`
 4. 滚动到页面底部，在 `API` 部分找到 `Zone ID`
-5. 复制它作为 `CF_ZONE_ID`
+5. 复制它作为 `CLOUDFLARE_ZONE_ID`
 
 ### 3. 自动发布流程
 

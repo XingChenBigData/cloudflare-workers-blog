@@ -16,10 +16,10 @@ const cacheZoneId = cacheZoneIdMatch ? cacheZoneIdMatch[1] : '';
 // 从环境变量获取配置
 const CONFIG = {
   // 从环境变量中获取
-  CF_API_TOKEN: process.env.CLOUDFLARE_API_TOKEN,
-  CF_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
-  // CF_ZONE_ID 在 KV 导入中不是必须的，但如果被用作缓存清除则保留
-  CF_ZONE_ID: process.env.CLOUDFLARE_ZONE_ID,
+  CLOUDFLARE_API_TOKEN: process.env.CLOUDFLARE_API_TOKEN,
+  CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
+  // CLOUDFLARE_ZONE_ID 在 KV 导入中不是必须的，但如果被用作缓存清除则保留
+  CLOUDFLARE_ZONE_ID: process.env.CLOUDFLARE_ZONE_ID,
 
   // 从 index.js 解析获取
   CACHE_TOKEN: cacheToken,
@@ -33,7 +33,7 @@ const CONFIG = {
 // 验证配置
 function validateConfig() {
   // 仅验证 KV 导入必需的环境变量
-  const required = ['CF_API_TOKEN', 'CF_ACCOUNT_ID'];
+  const required = ['CLOUDFLARE_API_TOKEN', 'CLOUDFLARE_ACCOUNT_ID'];
   const missing = required.filter(key => !CONFIG[key]);
 
   if (missing.length > 0) {
@@ -45,13 +45,13 @@ function validateConfig() {
 
 // 上传数据到KV
 async function uploadToKV(key, value) {
-  const url = `https://api.cloudflare.com/client/v4/accounts/${CONFIG.CF_ACCOUNT_ID}/storage/kv/namespaces/${CONFIG.KV_NAMESPACE_ID}/values/${key}`;
+  const url = `https://api.cloudflare.com/client/v4/accounts/${CONFIG.CLOUDFLARE_ACCOUNT_ID}/storage/kv/namespaces/${CONFIG.KV_NAMESPACE_ID}/values/${key}`;
 
   try {
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
-        'Authorization': `Bearer ${CONFIG.CF_API_TOKEN}`,
+        'Authorization': `Bearer ${CONFIG.CLOUDFLARE_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
       // 避免 JSON.stringify 两次
