@@ -25,7 +25,7 @@ const CONFIG = {
   CACHE_TOKEN: cacheToken,
   CACHE_ZONE_ID: cacheZoneId,
 
-  KV_NAMESPACE_ID: 'da4233e8fee74d0caa1a3088d5afe20e',
+  KV_NAMESPACE_ID: '70b1ff9d867a46f2a5bf77f93c51169e',
   WORKER_NAME: 'cloudflare-workers-blog',
   IMPORT_FILE: path.join(__dirname, '../content/output/import-data.json')
 };
