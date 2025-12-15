@@ -12,9 +12,9 @@ const cacheZoneId = cacheZoneIdMatch ? cacheZoneIdMatch[1] : '';
 
 // 从环境变量获取配置
 const CONFIG = {
-  CF_API_TOKEN: process.env.CF_API_TOKEN,
-  CF_ACCOUNT_ID: process.env.CF_ACCOUNT_ID,
-  CF_ZONE_ID: process.env.CF_ZONE_ID,
+  CF_API_TOKEN: process.env.CLOUDFLARE_API_TOKEN,
+  CF_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
+  CF_ZONE_ID: process.env.CLOUDFLARE_ZONE_ID,
   CACHE_TOKEN: cacheToken,
   CACHE_ZONE_ID: cacheZoneId,
   KV_NAMESPACE_ID: 'da4233e8fee74d0caa1a3088d5afe20e',
