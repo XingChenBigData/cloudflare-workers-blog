@@ -86,9 +86,7 @@ npm run convert
 3. **选择Actions**：点击 `Actions` 子选项
 4. **添加环境变量**：点击 `New repository secret` 按钮，依次添加以下环境变量：
 
-- `CF_API_TOKEN`: Cloudflare API令牌（需要Workers和KV权限）dTzF9HXbcGDsSYirqnFZIWX5tPAimxcOV-AnTezu
-- `CF_ACCOUNT_ID`: Cloudflare账户ID 9810362882c3c40a4ab9715b139bb019
-- `CF_ZONE_ID`: Cloudflare区域ID  36dad928402ae28ad4498949b4b218a5
+
 
 **注意**：这些设置是在**仓库的设置页面**中进行的，而不是GitHub的个人设置页面。
 
