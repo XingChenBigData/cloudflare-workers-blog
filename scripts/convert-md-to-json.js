@@ -43,7 +43,7 @@ async function parseMarkdownFiles() {
         const link = slugify(attributes.title, { lower: true, strict: true });
         
         // 转换Markdown为HTML
-        const contentHtml = marked(body);
+        const contentHtml = marked.parse(body);
         
         // 生成纯文本摘要
         const contentText = stripHtml(contentHtml).substring(0, CONFIG.readMoreLength).trim();
