@@ -1,0 +1,6 @@
+{
+  "articlesDir": "content/articles",
+  "outputDir": "content/output",
+  "pageSize": 5,
+  "readMoreLength": 150
+}

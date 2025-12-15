@@ -4,7 +4,9 @@
   "description": "A Blog Powered By Cloudflare Workers and KV",
   "main": "index.js",
   "scripts": {
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "convert": "node scripts/convert-md-to-json.js",
+    "import": "node scripts/import-to-kv.js"
   },
   "keywords": [
     "cloudflare",
@@ -15,6 +17,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "front-matter": "^4.0.2",
+    "fs-extra": "^11.3.2",
+    "marked": "^17.0.1",
+    "node-fetch": "^2.7.0",
+    "slugify": "^1.6.6",
     "wrangler": "^4.54.0"
   }
 }
